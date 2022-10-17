@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Typography, Button } from "@mui/material";
 import useStyles from "../styles";
 import { getMovie } from "../redux/feature/movieSlice";
-import Header from "../components/Header";
 import ReactStars from "react-rating-stars-component";
 import { getNodeText } from "@testing-library/react";
 import "./Movie.style.css";

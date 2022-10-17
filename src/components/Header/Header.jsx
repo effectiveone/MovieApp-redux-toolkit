@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react'
-import Search from './Search'
+import Search from '../Search'
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import uuid from 'react-uuid';
@@ -8,10 +8,16 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-import AppBar from '@mui/material/AppBar';
 
-
-  
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  ThemeProvider,
+  CssBaseline,
+  createMuiTheme
+} from "@material-ui/core";
+import ScrollToChangeColor from "./ScrollToChangeColor"  
 
 
 
@@ -40,12 +46,16 @@ function Header() {
   navigate(`/category/${target}`)
   }
 
+  const theme = createMuiTheme();
+
   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <ScrollToChangeColor>
     <AppBar position="sticky">
     <div style={header}>
-<button  onClick={() => navigate("/")}>
-Movie App
-</button>
+
 
 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
       <InputLabel id="demo-select-small">Category</InputLabel>
@@ -62,12 +72,16 @@ Movie App
       </Select>
     </FormControl>
 
-
+    <button  onClick={() => navigate("/")}>
+Movie App
+</button>
 
 <Search />
     </div>
     </AppBar>
-  )
+    </ScrollToChangeColor>
+    </ThemeProvider>
+  );
 }
 
 export default Header
@@ -75,8 +89,6 @@ export default Header
 const header = {
     paddingLeft: "100px",
     paddingRight: "100px",
-   
-    backgroundColor: "yellow",
     height: "100px",
     display: "flex",
     justifyContent: 'space-between',

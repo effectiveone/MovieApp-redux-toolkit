@@ -3,7 +3,6 @@ import React, {useEffect} from "react";
 import data from "../components/block.json"
 import CategoryList from "../components/CategoryList";
 import Search from "../components/Search";
-import Header from "../components/Header";
 import CallToAction from '../components/CallToAction';
 import uuid from 'react-uuid';
 import TheMostPopular from '../components/TheMostPopular';
