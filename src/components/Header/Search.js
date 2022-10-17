@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import * as ReactDOM from 'react-dom';
 import { TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import useStyles from "../styles";
-import { getMovies } from "../redux/feature/movieSlice";
-import MoviesList from "./MoviesList"; 
+import useStyles from "../../styles";
+import { getMovies } from "../../redux/feature/movieSlice";
+import MoviesList from "../MoviesList"; 
 import InputAdornment from '@mui/material/InputAdornment';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
-
+import "./Search.style.css"
 
 const Search = (props) => {
   const [name, setName] = useState("spider");
@@ -53,8 +53,9 @@ const Portals = () => {
         <TextField
           ref={inputElement}
           type="text"
-          fullWidth
+          // fullWidth
           value={name}
+          className="input trans"
           style={{borderRadius: "50%"}}
           InputProps={{
             endAdornment: (
@@ -64,7 +65,7 @@ const Portals = () => {
               </InputAdornment>
             ),
           }}
-          sx={{ m: 1, width: "55ch" }}
+          // sx={{ m: 1, }}
           onChange={({target: {value}}) => {
             setName(value)
             setOpen(true)

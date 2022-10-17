@@ -31,7 +31,7 @@
   }
   
   .items:hover {
-    transform: scale(1.7);
+    transform: scale(1.02);
     position: relative;
         z-index: 1000;
     top: 0;

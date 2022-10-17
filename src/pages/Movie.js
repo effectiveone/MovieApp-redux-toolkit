@@ -10,12 +10,29 @@ import "./Movie.style.css";
 import uuid from 'react-uuid';
 import Layout from "../Layout";
 import {ReactHeight} from 'react-height';
+import { favAdd } from "../redux/feature/favSlice";
 
 
 
 const Movie = () => {
   const dispatch = useDispatch();
   const { movie } = useSelector((state) => ({ ...state.movie }));
+  const [icon, setIcon] = useState("XX");
+
+  const FavHanlder = () => {
+    setIcon("ZZ");
+    dispatch(
+      favAdd({
+        id: movie.id,
+        img: movie.img,
+        title: movie.title,
+        type: movie.type,
+        release_date: movie.release_date,
+        rate: movie.rate,
+      })
+      
+    );
+  };
 
   const classes = useStyles();
   const { id } = useParams();
@@ -59,7 +76,9 @@ const time = new Date(movie.release_date)
  }}>
       <div className="wrapper" style={{bottom: "-50px",        
 }}>
-
+    <div className="fav" onClick={() => FavHanlder()}>
+        {icon}
+        </div>
     
     <section  style={{backgroundColor: "grey", width: "90%" }}>
     <ReactHeight onHeightReady={height => setChildHeightImage(height)}>

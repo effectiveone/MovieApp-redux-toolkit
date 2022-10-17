@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react'
-import Search from '../Search'
+import Search from './Search'
 import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 import uuid from 'react-uuid';
@@ -18,12 +18,14 @@ import {
   createMuiTheme
 } from "@material-ui/core";
 import ScrollToChangeColor from "./ScrollToChangeColor"  
-
+import Container from "@mui/material/Container"
+import Menu from './Menu';
 
 
 
 
 function Header() {
+
   const navigate = useNavigate();
 
 
@@ -31,18 +33,19 @@ function Header() {
  
 
 
-  const [listMovie, setListMovie] =useState([])
+  // const [listMovie, setListMovie] =useState([])
 
 
-  useEffect(()=> {
-    axios.get(`http://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`).then(resp =>  {
+  // useEffect(()=> {
+  //   axios.get(`http://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`).then(resp =>  {
 
-        setListMovie(resp?.data?.genres)
-    } )
-  },  [])
+  //       setListMovie(resp?.data?.genres)
+  //   } )
+  // },  [])
 
   const changeCategory = (e) => {
   const target =  e.target.value;
+
   navigate(`/category/${target}`)
   }
 
@@ -53,31 +56,19 @@ function Header() {
       <CssBaseline />
 
       <ScrollToChangeColor>
+
     <AppBar position="sticky">
+      <Container>
     <div style={header}>
 
-
-<FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small">Category</InputLabel>
-      <Select
-        labelId="demo-select-small"
-        id="demo-select-small"
-        label="Category"
-        onChange={changeCategory}
-      >
-    {listMovie?.map((opt, i) => (
-        <MenuItem value={opt.id} key={uuid()}>{opt.name} </MenuItem>
-
-    ))}
-      </Select>
-    </FormControl>
+<Menu/>
 
     <button  onClick={() => navigate("/")}>
 Movie App
 </button>
-
 <Search />
     </div>
+    </Container>
     </AppBar>
     </ScrollToChangeColor>
     </ThemeProvider>
@@ -95,3 +86,19 @@ const header = {
 
 
 }
+
+
+{/* <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+      <InputLabel id="demo-select-small">Category</InputLabel>
+      <Select
+        labelId="demo-select-small"
+        id="demo-select-small"
+        label="Category"
+        onChange={changeCategory}
+      >
+    {listMovie?.map((opt, i) => (
+        <MenuItem value={opt.id} key={uuid()}>{opt.name} </MenuItem>
+
+    ))}
+      </Select>
+    </FormControl> */}
