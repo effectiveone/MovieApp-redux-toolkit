@@ -14,7 +14,7 @@ const navigate = useNavigate();
     <nav className="nav">
     <ul className="nav__menu">
       <li className="nav__menu-item">
-        <a>Home</a>
+      <a onClick={() => navigate(`/`)}>Home</a>
       </li>
       <li
         className="nav__menu-item"
@@ -25,7 +25,7 @@ const navigate = useNavigate();
         { visibleCategory && <SubMenuCategory /> }
       </li>
       <li className="nav__menu-item">
-        <a>Contact</a>
+      <a onClick={() => navigate(`/favorite`)}>Favorite</a>
       </li>
     </ul>
   </nav>

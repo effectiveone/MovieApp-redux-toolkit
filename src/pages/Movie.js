@@ -1,39 +1,57 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
 import { Typography, Button } from "@mui/material";
 import useStyles from "../styles";
 import { getMovie } from "../redux/feature/movieSlice";
 import ReactStars from "react-rating-stars-component";
-import { getNodeText } from "@testing-library/react";
 import "./Movie.style.css";
 import uuid from 'react-uuid';
 import Layout from "../Layout";
 import {ReactHeight} from 'react-height';
+import { MdFavorite } from 'react-icons/md';
+import { MdFavoriteBorder } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 import { favAdd } from "../redux/feature/favSlice";
-
 
 
 const Movie = () => {
   const dispatch = useDispatch();
   const { movie } = useSelector((state) => ({ ...state.movie }));
-  const [icon, setIcon] = useState("XX");
+  const favorites = useSelector((state) => state?.favorite?.fav);
 
-  const FavHanlder = () => {
-    setIcon("ZZ");
-    dispatch(
-      favAdd({
-        id: movie.id,
-        img: movie.img,
-        title: movie.title,
-        type: movie.type,
-        release_date: movie.release_date,
-        rate: movie.rate,
-      })
-      
-    );
-  };
+  const [likes, setLikes] = useState([]);
 
+  useEffect(() => {
+    const zonk =  Object.values(favorites.map(z => z.id))
+    setLikes(likes=>([
+      ...likes,
+      ...zonk]
+    ))
+
+
+  },
+    [favorites])
+  
+    const FavHanlder = (item, index) => {
+      setLikes(likes=>([
+        ...likes,
+        item.id]
+     ))
+      // setLikes(...likes, movie.id);
+      dispatch(
+        favAdd({
+          id: item.id,
+          img: item.poster_path,
+          title: item.title,
+          type: item.type,
+          release_date: item.release_date,
+          rate: item.vote_average,
+        })
+        
+      );
+    };
   const classes = useStyles();
   const { id } = useParams();
   const navigate = useNavigate();
@@ -76,9 +94,7 @@ const time = new Date(movie.release_date)
  }}>
       <div className="wrapper" style={{bottom: "-50px",        
 }}>
-    <div className="fav" onClick={() => FavHanlder()}>
-        {icon}
-        </div>
+
     
     <section  style={{backgroundColor: "grey", width: "90%" }}>
     <ReactHeight onHeightReady={height => setChildHeightImage(height)}>
@@ -86,11 +102,27 @@ const time = new Date(movie.release_date)
     <div className="Template">
 <div><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width="200px" height="300px"/></div>
     
-      <div>
-        <Typography align="left" variant="h3" gutterBottom component="h2">
-          {movie.original_title}
+      <div >
+        <div style={{display: "flex", flexDirection: "row-reverse", float: "left" }}>
+    
+
+<div >
+                  <IconContext.Provider
+      value={{ color: 'red', size: '50px' }}
+    >
+      <div className="fav" onClick={() => FavHanlder(movie)}>
+      {likes.includes(movie.id) ?  <MdFavorite/> : <MdFavoriteBorder/>}
+        </div>
+        </IconContext.Provider>                  </div>
+          <Typography align="left" variant="h3" gutterBottom component="h2">
+          {movie.original_title}({time?.getFullYear()})
         </Typography>
-     <div>   <div className="rating">
+        </div>
+
+     <div> 
+
+        <div className="rating" style={{display: "flex", flexDirection: "row", float: "left", alignItems: "center"}}>
+
                <ReactStars
      count={10}
      value={movie.vote_average}
@@ -102,11 +134,10 @@ const time = new Date(movie.release_date)
      fullIcon={<i className="fa fa-star"></i>}
      activeColor="#ffd700"
    /><p style={{fontSize: "20px"}}>/{movie.vote_count}votes</p></div>
+
                </div> 
-        <Typography align="left" variant="h5" gutterBottom component="h5">
-          Year: {time?.getFullYear()}
-        </Typography>
-        <div className="genre">
+
+        <div className="genre" style={{clear: "both"}}>
                 {movie?.genres?.map((gen, i) => (
  <div key={uuid()} onClick={() => navigate(`/category/${gen.id}`)}>
  {gen.name}
@@ -114,7 +145,7 @@ const time = new Date(movie.release_date)
                  ))}</div>
         </div>
         </div>
-<div>
+<div style={{padding: "10px 20px 10px 20px"}}>
         <Typography align="left" variant="body1" gutterBottom component="p">
           {movie.overview}
         </Typography>

@@ -82,7 +82,7 @@ style={{
         </div>
     
 </div>
-<div class="a two"
+<div className="a two"
 style={{
     backgroundImage: `url(https://image.tmdb.org/t/p/w500${listMovie[numberOfSLider + 1]?.poster_path})`,
     backgroundSize: "cover",
@@ -102,7 +102,7 @@ style={{
        
         </div>
 </div>
-<div class="a three"
+<div className="a three"
 style={{
     backgroundImage: `url(https://image.tmdb.org/t/p/w500${listMovie[numberOfSLider + 2]?.poster_path})`,
     backgroundSize: "cover",
@@ -122,7 +122,7 @@ style={{
        
         </div>
 </div>
-<div class="a four"
+<div className="a four"
 style={{
     backgroundImage: `url(https://image.tmdb.org/t/p/w500${listMovie[numberOfSLider + 3]?.poster_path})`,
     backgroundSize: "cover",
@@ -142,7 +142,7 @@ style={{
        
         </div>
 </div>
-<div class="a five"
+<div className="a five"
 style={{
     backgroundImage: `url(https://image.tmdb.org/t/p/w500${listMovie[numberOfSLider + 4]?.poster_path})`,
     backgroundSize: "cover",

@@ -1,57 +1,70 @@
 import React from "react";
 import "./Favorite.css";
 import { useSelector } from "react-redux";
-// import StarIcon from "@material-ui/icons/Star";
-// import FavoriteIcon from "@material-ui/icons/Favorite";
+import Rating from '@mui/material/Rating';
+
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import uuid from 'react-uuid';
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { favRemove } from "../../redux/feature/favSlice";
 import Layout from "../../Layout"
+import { IconContext } from 'react-icons';
 const base_url = "https://image.tmdb.org/t/p/original";
 
 function Favorite() {
-  const [icon, setIcon] = React.useState("");
-  const data = useSelector((state) => state?.fav?.fav);
+  const data = useSelector((state) => state?.favorite?.fav);
+
   const dispatch = useDispatch();
 
   const truncate = (string, num) => {
     return string?.length > num ? string.substr(0, num - 1) + "..." : string;
   };
 
-  console.log("data", data)
 
   return (
     <>
     <Layout>
 
-      <div className="favorite">
-        <div className="fav__box">
-        
+      <div className="layoutfavorite">
+        <div className="fav__box" style={{ height: "1000px", color: "black"}}>
+  
           {data &&
             data.map((data) => (
-              <div className="moviesRow" key={data?.id}>
-                <Link to={`/${data?.type}/${data?.id}`}>
+              <div className="moviesRow" key={uuid()}>
+                <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                <Link to={`/movie/${data?.id}`}>
                   <img src={`${base_url}${data?.img}`} />
                 </Link>
+                <IconContext.Provider
+      value={{ color: 'red', size: '30px' }}
+    >
                 <div
                   className="fav"
                   onClick={() => dispatch(favRemove(data?.id))}
                 >
-                  {icon}
-                </div>
-
+                  <RiDeleteBin6Line/>
+                </div></IconContext.Provider>
+</div>
                 <div className="movie__info">
                   <div className="movie__name">
-                    <h3>{truncate(data?.title, 18)}</h3>
-                  </div>
-                  <div className="movie__other">
-                    <p>
-                      {data?.release_date}
-                      <span>
-                        {data?.rate}
-                        {/* <StarIcon /> */}
+                  <span>
+                    
+                        <Rating name="read-only"
+                        style={{color: "red"}}
+                         value={data?.rate}
+                          readOnly max={10}
+                            precision={0.5}/>
+
                       </span>
-                    </p>
+                      </div>
+                 
+                  <div className="movie__other">
+                  <h3 style={{color: "red"}}>{truncate(data?.title, 18)}</h3>
+                 
+                      {data?.release_date}
+               
+                   
                     <p>{data?.type}</p>
                   </div>
                 </div>

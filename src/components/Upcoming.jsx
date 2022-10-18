@@ -8,11 +8,18 @@ import React, {useState, useEffect} from 'react'
 import axios from "axios";
 import { Card, CardMedia, Grid, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { favAdd } from "../redux/feature/favSlice";
+import { MdFavorite } from 'react-icons/md';
+import { MdFavoriteBorder } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 const API_ENDPOINT =  `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`;
 
 function Upcoming() {
 const [listMovie, setListMovie] =useState([])
+const favorites = useSelector((state) => state?.favorite?.fav);
 
+const dispatch = useDispatch();
 
 
   useEffect(()=> {
@@ -36,6 +43,39 @@ const [listMovie, setListMovie] =useState([])
         prevEl: ".custom_prev"
       }
   };
+
+
+  const [likes, setLikes] = useState([]);
+
+  useEffect(() => {
+  const zonk =  Object.values(favorites.map(z => z.id))
+  setLikes(likes=>([
+    ...likes,
+    ...zonk]
+  ))
+  console.log("likes", likes)
+  },
+    [favorites])
+  
+    const FavHanlder = (item, index) => {
+      setLikes(likes=>([
+        ...likes,
+         item.id]
+     ))
+      // setLikes(...likes, item.id);
+      dispatch(
+        favAdd({
+          id: item.id,
+          img: item.poster_path,
+          title: item.title,
+          type: item.type,
+          release_date: item.release_date,
+          rate: item.vote_average,
+        })
+        
+      );
+    };
+   
   return (
     <>
 
@@ -51,6 +91,14 @@ const [listMovie, setListMovie] =useState([])
                  <SwiperSlide >
               <Grid  item className="items">
                 <Card sx={{ maxWidth: "350" }}>
+                <div className="favorite">
+                  <IconContext.Provider
+      value={{ color: 'red', size: '30px' }}
+    >
+      <div className="fav" onClick={() => FavHanlder(item, index)}>
+      {likes.includes(item.id) ?  <MdFavorite/> : <MdFavoriteBorder/>}
+        </div>
+        </IconContext.Provider>                  </div>
                   <Link to={`/movie/${item.id}`}>
                     <CardMedia
                       component="img"

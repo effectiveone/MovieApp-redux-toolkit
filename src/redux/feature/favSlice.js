@@ -9,13 +9,19 @@ export const favSlice = createSlice({
   initialState,
   reducers: {
     favAdd: (state, action) => {
+     const item  = state.fav.find((as) =>as.id === action.payload.id) 
+     if (item) {
+      return
+     }
+     else {
       state.fav.push({
         id: action.payload.id,
         img: action.payload.img,
         title: action.payload.title,
         rate: action.payload.rate,
         type: action.payload.type,
-      });
+      })
+    }
     },
 
     favRemove: (state, action) => {

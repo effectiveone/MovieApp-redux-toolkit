@@ -63,7 +63,7 @@ const Hero = () => {
             >
                 {
                     movieItems.map((item, i) => (
-                        <SwiperSlide key={i}>
+                        <SwiperSlide key={uuid()}>
                             {({ isActive }) => (
                                 <HeroSlideItem item={item} className={`${isActive ? 'active' : ''}`} />
                             )}
@@ -72,7 +72,7 @@ const Hero = () => {
                 }
             </Swiper>
             {
-                movieItems.map((item, i) => <TrailerModal key={i} item={item}/>)
+                movieItems.map((item, i) => <TrailerModal key={uuid()} item={item}/>)
             }
         </div>
     );
@@ -115,7 +115,6 @@ const HeroSlideItem = props => {
     item?.genre_ids.map(id => {
      
  const genresid =  listCategory.find(genre => genre.id === id) 
- console.log("genresid", genresid)
 return (
     <div style={{
         display: "flex",

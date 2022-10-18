@@ -39,6 +39,20 @@
     transition: .5s;
 
   }
+
+  .favorite {
+    display: none;
+    position: absolute;
+    right: 30%;
+    top: 10%;
+  }
+
+  .items:hover  .favorite {
+    transition: .20s;
+/* margin-top: 20px; */
+
+      opacity: 1;
+      display: block;}
   .title {
     display: none;
     position: absolute;

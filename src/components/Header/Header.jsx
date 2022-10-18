@@ -8,14 +8,13 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-
+import { createTheme } from '@material-ui/core/styles';
 import {
   AppBar,
   Toolbar,
   Typography,
   ThemeProvider,
   CssBaseline,
-  createMuiTheme
 } from "@material-ui/core";
 import ScrollToChangeColor from "./ScrollToChangeColor"  
 import Container from "@mui/material/Container"
@@ -49,7 +48,7 @@ function Header() {
   navigate(`/category/${target}`)
   }
 
-  const theme = createMuiTheme();
+  const theme = createTheme();
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,13 +59,16 @@ function Header() {
     <AppBar position="sticky">
       <Container>
     <div style={header}>
-
+<div style={menusPosition}>
 <Menu/>
-
+</div>
+<div style={logoPosition}>
     <button  onClick={() => navigate("/")}>
 Movie App
-</button>
+</button></div>
+<div style={searchPosition}>
 <Search />
+</div>
     </div>
     </Container>
     </AppBar>
@@ -78,14 +80,20 @@ Movie App
 export default Header
 
 const header = {
-    paddingLeft: "100px",
-    paddingRight: "100px",
-    height: "100px",
-    display: "flex",
-    justifyContent: 'space-between',
+  alignItems: "center",
+  
+display: "grid",
+gridTemplateColumns: "400px 1fr 1fr"};
+const menusPosition = {
+  gridColumn: "1/2"
+};
+const logoPosition = {
+  gridColumn: "2/3"
+};
+const searchPosition = {
+  gridColumn: "3/4"
+};
 
-
-}
 
 
 {/* <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
