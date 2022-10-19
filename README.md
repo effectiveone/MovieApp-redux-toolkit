@@ -1,7 +1,7 @@
 ## Preview
 ![Design preview for the Entertainment web app coding challenge](./assets/home.png)
 
-# Reactflix Movies App - CWR
+#  Movies App - Redux Toolkit
 
  Movies App to search movies, save movies to favorites, browse movies by categories to include several genres.
 
