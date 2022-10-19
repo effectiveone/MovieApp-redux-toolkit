@@ -15,7 +15,9 @@ function Category() {
 
     const dispatch = useDispatch();
     const { movieFullList } = useSelector((state) => ({ ...state.movie }));
-    console.log("movieFullList", movieFullList)
+
+    const kupa = useSelector((state) => ({ ...state }));
+    console.log("kupa", kupa)
 
     const { id } = useParams();
     const navigate = useNavigate();

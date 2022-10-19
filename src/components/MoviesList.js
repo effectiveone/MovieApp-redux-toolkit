@@ -3,6 +3,7 @@ import { Card, CardMedia, Grid, CardContent, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import uuid from 'react-uuid';
+import apiConfig from "../redux/apiConfig";
 
 const MoviesList = () => {
   const { moviesList } = useSelector((state) => ({ ...state.movie }));
@@ -20,7 +21,7 @@ const MoviesList = () => {
                     <CardMedia
                       component="img"
                       height="350"
-                      image={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      image={`${apiConfig.w500Image(item.poster_path)}`}
                       //   alt={item.Title}
                       />
                       <CardContent>

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Typography, Button } from "@mui/material";
 import useStyles from "../styles";
 import { getMovie } from "../redux/feature/movieSlice";
+import { getCrew} from "../redux/feature/movieSlice";
 import ReactStars from "react-rating-stars-component";
 import "./Movie.style.css";
 import uuid from 'react-uuid';
@@ -14,11 +15,13 @@ import { MdFavorite } from 'react-icons/md';
 import { MdFavoriteBorder } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 import { favAdd } from "../redux/feature/favSlice";
-
+import apiConfig from '../redux/apiConfig'
 
 const Movie = () => {
   const dispatch = useDispatch();
-  const { movie } = useSelector((state) => ({ ...state.movie }));
+
+  const { movie, crew } = useSelector((state) => ({ ...state.movie }));
+
   const favorites = useSelector((state) => state?.favorite?.fav);
 
   const [likes, setLikes] = useState([]);
@@ -59,7 +62,9 @@ const Movie = () => {
   useEffect(() => {
     if (id) {
       dispatch(getMovie(id));
+      dispatch(getCrew(id));
     }
+
   }, [id]);
 
   useEffect(() => {
@@ -77,16 +82,22 @@ useEffect(()=>{
 
   
 {  setParentDivHeight(childHeight )}
-  console.log("parentDivHeight", parentDivHeight)
+  
 
 },[childHeight, childHeightImage, parentDivHeight])
 const time = new Date(movie.release_date)
+
+
+
+
+
   return (
     <>
     
   <Layout>
-    <div style={{paddingBottom: "200px", height: parentDivHeight}}>
-    <div className="container" style={{backgroundImage: movie.backdrop_path ? `url(https://image.tmdb.org/t/p/w500${movie.backdrop_path})` : "", 
+    <div style={{paddingBottom: "200px", height: parentDivHeight}}>       
+
+    <div className="container" style={{backgroundImage: movie.backdrop_path ? `url(${apiConfig.w500Image(movie.backdrop_path)})` : "", 
  backgroundRepeat: "no-repeat",
  backgroundSize: "cover",
  height: "500px",
@@ -100,7 +111,7 @@ const time = new Date(movie.release_date)
     <ReactHeight onHeightReady={height => setChildHeightImage(height)}>
 
     <div className="Template">
-<div><img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} width="200px" height="300px"/></div>
+<div><img src={ `${apiConfig.w500Image(movie.poster_path)}`} width="200px" height="300px"/></div>
     
       <div >
         <div style={{display: "flex", flexDirection: "row-reverse", float: "left" }}>
@@ -154,11 +165,40 @@ const time = new Date(movie.release_date)
           Go Back
         </Button>
       </div>
+
       </ReactHeight>
+ 
     </section>
     </div>
     </div>
     </div>
+           <h2 > Crew</h2>
+    <div style={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)"}}>
+    {crew?.payload?.crew?.filter(z => z.profile_path).map((cre) => (
+    <React.Fragment key={uuid()}>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "10px 20px 10px 20px"}}>
+   <img src={`${apiConfig.w500Image(cre.profile_path)}`} style={{borderRadius: "100%"}} width="100px" height="100px" />
+    <p style={{color: "red"}}>  {cre.name}</p>
+    </div>
+</React.Fragment>
+    ))}
+  
+</div>
+
+<h2 > Cost</h2>
+<div style={{display: "grid", gridTemplateColumns: "repeat(5, 1fr)"}}>
+    {crew?.payload?.cast?.filter(z => z.profile_path).map((cre) => (
+    <React.Fragment key={uuid()}>
+      <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", padding: "10px 20px 10px 20px"}}>
+   <img src={`${apiConfig.w500Image(cre.profile_path)}`} style={{borderRadius: "100%"}} width="100px" height="100px" />
+    <p style={{color: "red"}}>  {cre.name}</p>
+    </div>
+</React.Fragment>
+    ))}
+  
+</div>
+
+
     </Layout>
 
       </>

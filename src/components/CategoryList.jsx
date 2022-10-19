@@ -14,6 +14,8 @@ import { favAdd } from "../redux/feature/favSlice";
 import { MdFavorite } from 'react-icons/md';
 import { MdFavoriteBorder } from 'react-icons/md';
 import { IconContext } from 'react-icons';
+import apiConfig from "../redux/apiConfig"
+
 const API_ENDPOINT = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`;
 
 
@@ -103,7 +105,7 @@ const dispatch = useDispatch();
                     <CardMedia
                       component="img"
                       height="350"
-                      image={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      image={`${apiConfig.w500Image(item.poster_path)}`}
                     //   alt={item.Title}
                     />
                     <CardContent>

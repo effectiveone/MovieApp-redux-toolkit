@@ -2,13 +2,12 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import { FixedSizeList, ListChildComponentProps } from 'react-window';
+
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoryMovies } from "../../redux/feature/categorySlice";
 
 
 
@@ -23,13 +22,23 @@ export default function Footer() {
 
   const [listMovie, setListMovie] =useState([])
 
+  const dispatch = useDispatch();
 
-  useEffect(()=> {
-    axios.get(`http://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`).then(resp =>  {
 
-        setListMovie(resp?.data?.genres)
-    } )
-  },  [])
+  const { category, loading, error } = useSelector(state=>state.category);
+  
+  useEffect(() => {
+  
+  dispatch(getCategoryMovies());
+  
+  }, [dispatch]);
+
+
+useEffect(()=> {
+
+      setListMovie(category?.genres)
+},  [category])
+
 
   const changeCategory = (e) => {
   const target =  e.target.value;

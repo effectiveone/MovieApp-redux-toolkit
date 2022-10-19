@@ -1,6 +1,15 @@
 import { takeLatest, put, fork, call } from "redux-saga/effects";
-import { fetchMovie, fetchMovies, fetchAllMovie } from "./api";
-import { getMovie, getMovies, setMovie, setMovies, getCategoryMovies, setCategoryMovies } from "./feature/movieSlice";
+import { fetchMovie, fetchMovies, fetchAllMovie, fetchCrew } from "./api";
+import {
+  getCrew,
+  setCrew,
+  getMovie,
+  getMovies,
+  setMovie,
+  setMovies,
+  getCategoryMovies,
+  setCategoryMovies,
+} from "./feature/movieSlice";
 
 function* onLoadMoviesAsync({ payload }) {
   try {
@@ -26,11 +35,22 @@ function* onLoadMovieAsync({ payload }) {
   }
 }
 
+function* onLoadCrewAsync({ payload }) {
+  try {
+    const crewID = payload;
+    const response = yield call(fetchCrew, crewID);
+    if (response.status === 200) {
+      yield put(setCrew({ ...response.data }));
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function* onLoadCategoryMoviesAsync({ payload }) {
   try {
     const categoryName = payload;
-
+console.log("fetchAllMovie", fetchAllMovie)
     const response = yield call(fetchAllMovie, categoryName);
     if (response.status === 200) {
       yield put(setCategoryMovies({ ...response.data }));
@@ -52,4 +72,12 @@ function* onLoadMovie() {
   yield takeLatest(getMovie.type, onLoadMovieAsync);
 }
 
-export const moviesSagas = [fork(onLoadMovies), fork(onLoadMovie), fork(onLoadCategoryMovies)];
+function* onLoadCrew() {
+  yield takeLatest(getCrew.type, onLoadCrewAsync);
+}
+export const moviesSagas = [
+  fork(onLoadMovies),
+  fork(onLoadCrew),
+  fork(onLoadMovie),
+  fork(onLoadCategoryMovies)
+];

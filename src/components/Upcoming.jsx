@@ -13,7 +13,7 @@ import { favAdd } from "../redux/feature/favSlice";
 import { MdFavorite } from 'react-icons/md';
 import { MdFavoriteBorder } from 'react-icons/md';
 import { IconContext } from 'react-icons';
-const API_ENDPOINT =  `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`;
+import apiConfig from "../redux/apiConfig"
 
 function Upcoming() {
 const [listMovie, setListMovie] =useState([])
@@ -23,7 +23,7 @@ const dispatch = useDispatch();
 
 
   useEffect(()=> {
-    axios.get(`${API_ENDPOINT}`).then(resp =>  {
+    axios.get(`${apiConfig.Upcoming_movie}`).then(resp =>  {
 
         setListMovie(resp.data?.results)
     } )
@@ -103,7 +103,7 @@ const dispatch = useDispatch();
                     <CardMedia
                       component="img"
                       height="350"
-                      image={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      image={`${apiConfig.w500Image(item.poster_path)}`}
                     //   alt={item.Title}
                     />
                     <CardContent>

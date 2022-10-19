@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { favRemove } from "../../redux/feature/favSlice";
 import Layout from "../../Layout"
 import { IconContext } from 'react-icons';
-const base_url = "https://image.tmdb.org/t/p/original";
+import apiConfig from "../../redux/apiConfig";
 
 function Favorite() {
   const data = useSelector((state) => state?.favorite?.fav);
@@ -34,7 +34,7 @@ function Favorite() {
               <div className="moviesRow" key={uuid()}>
                 <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
                 <Link to={`/movie/${data?.id}`}>
-                  <img src={`${base_url}${data?.img}`} />
+                  <img src={`${apiConfig.originalImage(data?.img)}`}/>
                 </Link>
                 <IconContext.Provider
       value={{ color: 'red', size: '30px' }}

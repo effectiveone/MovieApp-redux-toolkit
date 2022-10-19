@@ -17,6 +17,10 @@ import uuid from "react-uuid"
 // Import Swiper styles
 import "swiper/swiper.min.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoryMovies } from "../../redux/feature/categorySlice";
+
+
 const Hero = () => {
     const category = {
         movie: 'movie',
@@ -30,12 +34,12 @@ const Hero = () => {
     SwiperCore.use([Autoplay, Navigation, Pagination]);
 
     const [movieItems, setMovieItems] = useState([]);
-    const API_ENDPOINT = `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}&language=en-US&page=1`;
+  
 
  
   
     useEffect(() => {
-        axios.get(`${API_ENDPOINT}`).then(resp =>  {
+        axios.get(`${apiConfig.Top_rated_movie}`).then(resp =>  {
   
             setMovieItems(resp.data?.results.slice(1, 4))
           } )
@@ -82,12 +86,24 @@ const HeroSlideItem = props => {
     const [listCategory, setListCategory] =useState([])
 
 
-    useEffect(()=> {
-      axios.get(`http://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`).then(resp =>  {
-  
-        setListCategory(resp?.data?.genres)
-      } )
-    },  [])
+    const dispatch = useDispatch();
+
+
+    const { category, loading, error } = useSelector(state=>state.category);
+    
+    useEffect(() => {
+    
+    dispatch(getCategoryMovies());
+    
+    }, [dispatch]);
+
+
+  useEffect(()=> {
+
+    setListCategory(category?.genres)
+  },  [category])
+
+
 
     let navigate = useNavigate();
 
@@ -114,7 +130,7 @@ const HeroSlideItem = props => {
         { item && (
     item?.genre_ids.map(id => {
      
- const genresid =  listCategory.find(genre => genre.id === id) 
+ const genresid =  listCategory?.find(genre => genre.id === id) 
 return (
     <div style={{
         display: "flex",

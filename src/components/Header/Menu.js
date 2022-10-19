@@ -1,13 +1,17 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import uuid from 'react-uuid';
 import "./Menu.style.css";
-import axios from "axios"
-import { takeLatest } from 'redux-saga/effects';
+import { useDispatch, useSelector } from "react-redux";
+import { getCategoryMovies } from "../../redux/feature/categorySlice";
+
+
+
+
 
 function Menu() {
-const [visibleCategory, setVisibleCategory] = useState(false)
 
+const [visibleCategory, setVisibleCategory] = useState(false)
 const navigate = useNavigate();
 
   return (
@@ -34,22 +38,27 @@ const navigate = useNavigate();
 
 const SubMenuCategory = () => {
     const [listMovie, setListMovie] =useState([])
+    const dispatch = useDispatch();
 
+
+    const { category, loading, error } = useSelector(state=>state.category);
+    
+    useEffect(() => {
+    
+    dispatch(getCategoryMovies());
+    
+    }, [dispatch]);
 const navigate = useNavigate();
 
 
   useEffect(()=> {
-    axios.get(`http://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`).then(resp =>  {
 
-        setListMovie(resp?.data?.genres)
-    } )
-  },  [])
+        setListMovie(category?.genres)
+  },  [category])
+
+
+
       return (
-    //             {listMovie?.slice(0,6).map((opt, i) => (
-    //                        <li className="nav__submenu-itemA " key={uuid()}>
-    //                        <a onClick={() => navigate(`/category/${opt.id}`)}>  {opt.name}</a>
-    //                      </li>
-    // ))}
        <ul className="nav__submenu" key={uuid()}>
           {listMovie.slice(6,13).map((col, i) => {
  return(

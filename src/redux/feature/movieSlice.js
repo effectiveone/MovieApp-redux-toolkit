@@ -6,6 +6,7 @@ const movieSlice = createSlice({
     moviesList: [],
     movieFullList: [],
     movie: [],
+    crew: []
   },
   reducers: {
     getCategoryMovies(category) {
@@ -26,9 +27,15 @@ const movieSlice = createSlice({
     setMovie: (state, action) => {
       state.movie = action.payload;
     },
+    getCrew(id) {
+      return id;
+    },
+    setCrew: (state, action) => {
+      state.crew = action;
+    },
   },
 });
 
-export const { getMovies, setMovies, setMovie, getMovie, getCategoryMovies, setCategoryMovies } = movieSlice.actions;
+export const { getCrew, setCrew, getMovies, setMovies, setMovie, getMovie, getCategoryMovies, setCategoryMovies } = movieSlice.actions;
 
 export default movieSlice.reducer;
