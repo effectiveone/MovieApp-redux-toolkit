@@ -13,7 +13,6 @@ function Slider() {
 const [listMovie, setListMovie] =useState([])
   useEffect(()=> {
     axios.get(`${API_ENDPOINT}`).then(resp =>  {
-console.log("listMovie", resp.data?.results)
         setListMovie(resp.data?.results)
     } )
   }, [])
@@ -34,17 +33,14 @@ style={{
   position: "relative"
 }}
 >    
-    {/* <img className="locandina" src={`https://image.tmdb.org/t/p/w500${listMovie[numberOfSLider]?.poster_path}`} width="100%" height="100%" /> */}
 
 
 
 
 {listMovie && listMovie.length >= 5 && (
           <>
-          {/* <div style={{position: "relative"}}> */}
           {numberOfSLider !== listMovie.length -1 && (
 <div style={{position: "absolute",
-// transform: "translate(100%, 500%)",
  bottom: "10px", right: "20px", 
  zIndex: 2}}     > 
 {numberOfSLider < (listMovie.length -5 ) && (  <SliderArrows
@@ -56,7 +52,6 @@ style={{
             )}
             {numberOfSLider > 0 && (
               <div style={{position: "absolute", 
-            //   transform: "translate(-100%, 500%)",
               bottom: "10px", right: "50px",
                zIndex: 2}}     >   
             <SliderArrows
@@ -65,7 +60,6 @@ style={{
               handleClick={() => setNumberOfSLider(prev => prev -1)}
             /></div>
             )}
-{/* </div> */}
           </>
         )}
         <div className="description">

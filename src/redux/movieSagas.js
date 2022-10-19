@@ -1,5 +1,5 @@
 import { takeLatest, put, fork, call } from "redux-saga/effects";
-import { fetchMovie, fetchMovies, fetchAllMovie, fetchCrew } from "./api";
+import { fetchMovie, fetchMovies, fetchAllMovie, fetchCrew, fetchTheMostPopularMovie, fetchUpcomingMovie } from "./api";
 import {
   getCrew,
   setCrew,
@@ -9,6 +9,10 @@ import {
   setMovies,
   getCategoryMovies,
   setCategoryMovies,
+  getTheMostPopular, 
+  setTheMostPopular,
+  getUpcomingMovie,
+  setUpcomingMovie
 } from "./feature/movieSlice";
 
 function* onLoadMoviesAsync({ payload }) {
@@ -50,7 +54,6 @@ function* onLoadCrewAsync({ payload }) {
 function* onLoadCategoryMoviesAsync({ payload }) {
   try {
     const categoryName = payload;
-console.log("fetchAllMovie", fetchAllMovie)
     const response = yield call(fetchAllMovie, categoryName);
     if (response.status === 200) {
       yield put(setCategoryMovies({ ...response.data }));
@@ -58,6 +61,40 @@ console.log("fetchAllMovie", fetchAllMovie)
   } catch (error) {
     console.log(error);
   }
+}
+
+
+function* onLoadTheMostPopularAsync({ payload }) {
+  try {
+    const categoryName = payload;
+    const response = yield call(fetchTheMostPopularMovie, categoryName);
+    if (response.status === 200) {
+      yield put(setTheMostPopular({ ...response.data }));
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function* onLoadUpcomingMovieAsync({ payload }) {
+  try {
+    const categoryName = payload;
+    const response = yield call(fetchUpcomingMovie, categoryName);
+    if (response.status === 200) {
+      yield put(setUpcomingMovie({ ...response.data }));
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+function* onLoadUpcomingMovie() {
+  yield takeLatest(getUpcomingMovie.type, onLoadUpcomingMovieAsync);
+}
+
+function* onLoadTheMostPopularMovie() {
+  yield takeLatest(getTheMostPopular.type, onLoadTheMostPopularAsync);
 }
 
 function* onLoadCategoryMovies() {
@@ -75,7 +112,10 @@ function* onLoadMovie() {
 function* onLoadCrew() {
   yield takeLatest(getCrew.type, onLoadCrewAsync);
 }
+
 export const moviesSagas = [
+  fork(onLoadUpcomingMovie),
+  fork(onLoadTheMostPopularMovie),
   fork(onLoadMovies),
   fork(onLoadCrew),
   fork(onLoadMovie),

@@ -8,28 +8,31 @@ import React, {useState, useEffect} from 'react'
 import axios from "axios";
 import { Card, CardMedia, Grid, CardContent, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+
 import { useSelector, useDispatch } from "react-redux";
-import { favAdd } from "../redux/feature/favSlice";
+import { favAdd } from "../../redux/feature/favSlice";
 import { MdFavorite } from 'react-icons/md';
 import { MdFavoriteBorder } from 'react-icons/md';
 import { IconContext } from 'react-icons';
-import apiConfig from "../redux/apiConfig"
+import apiConfig from "../../redux/apiConfig"
 
-function Upcoming() {
+const API_ENDPOINT = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_MOVIE_API_KEY}`;
+
+
+function CategoryList({category, name}) {
 const [listMovie, setListMovie] =useState([])
+
 const favorites = useSelector((state) => state?.favorite?.fav);
 
 const dispatch = useDispatch();
 
-
   useEffect(()=> {
-    axios.get(`${apiConfig.Upcoming_movie}`).then(resp =>  {
+    axios.get(`${API_ENDPOINT}&query=${category}`).then(resp =>  {
 
         setListMovie(resp.data?.results)
     } )
   }, [])
 
- 
 
 
  
@@ -45,6 +48,7 @@ const dispatch = useDispatch();
   };
 
 
+
   const [likes, setLikes] = useState([]);
 
   useEffect(() => {
@@ -53,7 +57,6 @@ const dispatch = useDispatch();
     ...likes,
     ...zonk]
   ))
-  console.log("likes", likes)
   },
     [favorites])
   
@@ -75,18 +78,15 @@ const dispatch = useDispatch();
         
       );
     };
-   
   return (
     <>
 
-          <h2>Upcoming</h2>
+          <h2>{name}</h2>
         
                 <Swiper
       {...params}
       >
-            {listMovie?.map((item, index) => {
-              const time = new Date(item.release_date)
-              return(
+            {listMovie?.map((item, index) => (
               <React.Fragment key={uuid()}>
                  <SwiperSlide >
               <Grid  item className="items">
@@ -116,7 +116,7 @@ const dispatch = useDispatch();
                         {item.original_title}
                       </Typography>
                       <Typography variant="body2" color="white" >
-                        ({time?.getFullYear()})
+                        ({item.release_date})
                       </Typography>
                       <div style={{display: "flex", float: "left", paddingLeft: "10px", paddingRight: "10px"}}>
                       <ReactStars
@@ -134,11 +134,11 @@ const dispatch = useDispatch();
               </Grid>
               </SwiperSlide>
               </React.Fragment>
-            )})}
+            ))}
             </Swiper>
       
    
     </>)
 }
 
-export default Upcoming
+export default CategoryList

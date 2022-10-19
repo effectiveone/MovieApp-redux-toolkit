@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryMovies } from "../../redux/feature/categorySlice";
 
-
+import uuid from "react-uuid";
 
 
 export default function Footer() {
@@ -57,7 +57,7 @@ useEffect(()=> {
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Category</Box>
             {  ["Home", "Contact", "usTerm of services", "About us"].map(z =>(
-                <Box>
+                <Box key={uuid()}>
                 <Link href="/" color="inherit">
                  {z}
                 </Link>
@@ -72,7 +72,7 @@ useEffect(()=> {
                 "Premium",
                 "Pravacy policy"
               ].map(z =>(
-                <Box>
+                <Box key={uuid()}>
                 <Link href="/" color="inherit">
                  {z}
                 </Link>
@@ -85,7 +85,7 @@ useEffect(()=> {
        "You must watch",
        "Recent release",
        "Top IMDB" ].map(z =>(
-        <Box>
+        <Box key={uuid()}>
         <Link href="/" color="inherit">
          {z}
         </Link>

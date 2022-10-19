@@ -75,9 +75,7 @@ const Hero = () => {
                     ))
                 }
             </Swiper>
-            {
-                movieItems.map((item, i) => <TrailerModal key={uuid()} item={item}/>)
-            }
+         
         </div>
     );
 }
@@ -126,7 +124,7 @@ const HeroSlideItem = props => {
 <div className="flex__item flex__item--left">
   <div className="flex__content" style={{paddingLeft: "100px", paddingRight: "100px"}}>
 
-    <p className="text--sub">
+    <div className="text--sub">
         { item && (
     item?.genre_ids.map(id => {
      
@@ -138,12 +136,12 @@ return (
         borderStyle: "1px solid",
         float: "left",
 paddingRight: "100px"
-    }} key={uuid()}> {genresid?.name}</div>
+    }} key={uuid()}> <p>{genresid?.name}</p></div>
 )})
         )
 }
 
-   </p>
+   </div>
    
    
     <h1 className="text--big">{item.title}</h1>
@@ -170,21 +168,7 @@ paddingRight: "100px"
 
 
 
-const TrailerModal = props => {
-    const item = props.item;
 
-    const iframeRef = useRef(null);
-
-    const onClose = () => iframeRef.current.setAttribute('src', '');
-
-    return (
-        <Modal active={false} id={`modal_${item.id}`}>
-            <Box onClose={onClose}>
-                <iframe ref={iframeRef} width="100%" height="500px" title="trailer"></iframe>
-            </Box>
-        </Modal>
-    )
-}
 
 
 

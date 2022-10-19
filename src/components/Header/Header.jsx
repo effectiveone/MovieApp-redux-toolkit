@@ -50,9 +50,8 @@ function Header() {
 <Menu/>
 </div>
 <div style={logoPosition}>
-    <button  onClick={() => navigate("/")}>
-Movie App
-</button></div>
+    <img src="movieLogo.webp" onClick={() => navigate("/")}/>
+</div>
 <div style={searchPosition}>
 <Search />
 </div>

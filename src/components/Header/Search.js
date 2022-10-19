@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import useStyles from "../../styles";
 import { getMovies } from "../../redux/feature/movieSlice";
-import MoviesList from "../MoviesList"; 
+import MoviesList from "./Portal/MoviesList"; 
 import InputAdornment from '@mui/material/InputAdornment';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import "./Search.style.css"
 
 const Search = (props) => {
   const [name, setName] = useState("spider");
-  const [open, setOpen] = useState();
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const {
     moviesList: { Error: error },
@@ -56,7 +56,7 @@ const Portals = () => {
           // fullWidth
           value={name}
           className="input trans"
-          style={{borderRadius: "50%"}}
+          style={{ backgroundColor: "white"}}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">

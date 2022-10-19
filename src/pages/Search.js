@@ -56,7 +56,6 @@ variant="outlined"
   hideNextButton
   onChange={(e, page) => {
     const number = parseFloat(page)
-    console.log("number", e.target.value)
     navigate(`/search/${dataPage}&page=${number}`)}}
   />
   </Stack>

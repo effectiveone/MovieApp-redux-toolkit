@@ -17,11 +17,10 @@ function Category() {
     const { movieFullList } = useSelector((state) => ({ ...state.movie }));
 
     const kupa = useSelector((state) => ({ ...state }));
-    console.log("kupa", kupa)
 
     const { id } = useParams();
     const navigate = useNavigate();
-   
+  
     useEffect(() => {
 
       if (id) {
@@ -58,7 +57,6 @@ variant="outlined"
   hideNextButton
   onChange={(e, page) => {
     const number = parseFloat(page)
-    console.log("number", e.target.value)
     navigate(`/category/${dataPage}&page=${number}`)}}
   />
   </Stack>

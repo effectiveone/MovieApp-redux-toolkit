@@ -5,7 +5,7 @@ import "./Menu.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryMovies } from "../../redux/feature/categorySlice";
 
-
+import ScrollToChangeColor from './ScrollToChangeColor';
 
 
 
@@ -15,6 +15,7 @@ const [visibleCategory, setVisibleCategory] = useState(false)
 const navigate = useNavigate();
 
   return (
+    <ScrollToChangeColor>
     <nav className="nav">
     <ul className="nav__menu">
       <li className="nav__menu-item">
@@ -33,11 +34,14 @@ const navigate = useNavigate();
       </li>
     </ul>
   </nav>
+  </ScrollToChangeColor>
   )
 }
 
 const SubMenuCategory = () => {
     const [listMovie, setListMovie] =useState([])
+   
+
     const dispatch = useDispatch();
 
 

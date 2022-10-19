@@ -3,7 +3,7 @@ import { Card, CardMedia, Grid, CardContent, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import uuid from 'react-uuid';
-import apiConfig from "../redux/apiConfig";
+import apiConfig from "../../../redux/apiConfig";
 
 const MoviesList = () => {
   const { moviesList } = useSelector((state) => ({ ...state.movie }));
