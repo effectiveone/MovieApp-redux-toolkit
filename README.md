@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+## Preview
+![Design preview for the Entertainment web app coding challenge](./assets/home.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#  Movies App - Redux Toolkit
 
-## Available Scripts
+ Movies App to search movies, save movies to favorites, browse movies by categories to include several genres.
 
-In the project directory, you can run:
+## Main Features:
 
-### `npm start`
+- Consumes [TMDB](https://www.themoviedb.org/) APIs
+- [Authentication](https://developers.themoviedb.org/3/getting-started/authentication) via The Movie Database API
+- Browse movies by Category or Genres
+- Pagination for all Movie Lists
+- Movie Information Page crew/cast of Actors
+- Search Movies by Title
+- Add or Remove Movies to/from Favorites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Tech Stack:
+- [React JS](https://reactjs.org/docs/getting-started.html) v17.02 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Material UI](https://mui.com/material-ui/getting-started/installation/) 
+- [Material Styles](https://mui.com/system/styles/basics/) 
+- [Material Icons](https://mui.com/material-ui/material-icons/#main-content) 
+- [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+- [React-Redux](https://react-redux.js.org/introduction/getting-started)
+- [React-Router V6](https://v6.reactrouter.com/web/guides/quick-start)
+- [AXIOS](https://axios-http.com/docs/intro)
+- [SWIPPER](https://swiperjs.com/react)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Instructions:
+#### 1. Clone this repository.
+```bash
+git clone https://github.com/effectiveone/MovieApp-redux-toolkit.git
+```
 
-### `npm test`
+#### 2. Go to the project directory.
+```bash
+cd react-redux-toolkit-movie-app
+```
+#### 3. Install dependencies
+You will need to install the dependencies listed in the package.json
+```
+npm install
+```
+or
+```
+yarn install
+```
+#### 3. Setup Account with TMDB & ALAN
+Go here [TMDB](https://www.themoviedb.org/signup?language=en-US) to set up a account then you will need to request a API KEY.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+#### 4. Set Environment Variables
+You'll need to set your TMDB API key in the environment variable file so your project runs correctly. Rename `.example.env` file to `.env` and place your TMDB API key there. Be sure to remove the '#' sign prepending the variable names.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 5. Run The App
+To start the app 
+```
+npm start
+```
+or
+```
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshots
+![Design preview for the Entertainment web app coding challenge](./assets/home.png)
+![Design preview for the Entertainment web app coding challenge](./assets/movie.png)
+![Design preview for the Entertainment web app coding challenge](./assets/favorite.png)
+![Design preview for the Entertainment web app coding challenge](./assets/search.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 👨‍💻 Connect with me 
+mail: konrad.gruca90@gmail.com
