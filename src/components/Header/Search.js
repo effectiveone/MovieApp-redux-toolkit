@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import "./Search.style.css"
 
 const Search = (props) => {
-  const [name, setName] = useState("spider");
+  const [name, setName] = useState("love");
   const [open, setOpen] = useState(false);
   const classes = useStyles();
   const {
