@@ -1,6 +1,9 @@
+## Preview
+![Design preview for the Entertainment web app coding challenge](./assets/home.png)
+
 # Reactflix Movies App - CWR
 
-Reactflix Movies App to search movies, save movies to favorites, create a movies watchlist and browse movies by categories to include several genres.
+ Movies App to search movies, save movies to favorites, browse movies by categories to include several genres.
 
 ## Main Features:
 
@@ -8,14 +11,9 @@ Reactflix Movies App to search movies, save movies to favorites, create a movies
 - [Authentication](https://developers.themoviedb.org/3/getting-started/authentication) via The Movie Database API
 - Browse movies by Category or Genres
 - Pagination for all Movie Lists
-- Movie Information Page w/cast of Actors and Recommended Movies
-- Actor Information Page to include Movies List for that Actor
-- Watch Movie Trailers via Modal
+- Movie Information Page crew/cast of Actors
 - Search Movies by Title
-- Profile Page for Authenticated Users
-- Create, Save or Delete Movies from Watchlist
 - Add or Remove Movies to/from Favorites
-- Voice capabilities to search & navigate using [Alan](https://alan.app/)
 
 ### Tech Stack:
 - [React JS](https://reactjs.org/docs/getting-started.html) v17.02 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -23,16 +21,22 @@ Reactflix Movies App to search movies, save movies to favorites, create a movies
 - [Material Styles](https://mui.com/system/styles/basics/) 
 - [Material Icons](https://mui.com/material-ui/material-icons/#main-content) 
 - [Redux Toolkit](https://redux-toolkit.js.org/introduction/getting-started)
-- [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 - [React-Redux](https://react-redux.js.org/introduction/getting-started)
-- [React-Router V5](https://v5.reactrouter.com/web/guides/quick-start)
-- [Alan AI - React](https://alan.app/docs/client-api/web/react/)
+- [React-Router V6](https://v6.reactrouter.com/web/guides/quick-start)
 - [AXIOS](https://axios-http.com/docs/intro)
+- [SWIPPER](https://swiperjs.com/react)
 
-### Getting Setup:
-#### 1. Get the source code
-You need to clone the master branch of then navigate to the project folder.
-#### 2. Install dependencies
+### Instructions:
+#### 1. Clone this repository.
+```bash
+git clone https://github.com/effectiveone/MovieApp-redux-toolkit.git
+```
+
+#### 2. Go to the project directory.
+```bash
+cd react-redux-toolkit-movie-app
+```
+#### 3. Install dependencies
 You will need to install the dependencies listed in the package.json
 ```
 npm install
@@ -58,3 +62,14 @@ or
 ```
 yarn start
 ```
+
+## Screenshots
+![Design preview for the Entertainment web app coding challenge](./assets/home.png)
+![Design preview for the Entertainment web app coding challenge](./assets/movie.png)
+![Design preview for the Entertainment web app coding challenge](./assets/favorite.png)
+![Design preview for the Entertainment web app coding challenge](./assets/search.png)
+
+## 👨‍💻 Connect with me 
+mail: konrad.gruca90@gmail.com
+
+
