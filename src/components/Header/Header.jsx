@@ -10,19 +10,10 @@ import {
 import ScrollToChangeColor from "./ScrollToChangeColor"
 import Container from "@mui/material/Container"
 import Menu from './Menu';
-import { useSelector, useDispatch } from "react-redux";
-
 
 
 function Header() {
   const navigate = useNavigate();
-  const category = useSelector((state) => ({ ...state }));
-  const changeCategory = (e) => {
-    const target = e.target.value;
-
-    navigate(`/category/${target}`)
-  }
-
   const theme = createTheme();
 
   return (
@@ -66,20 +57,3 @@ const logoPosition = {
 const searchPosition = {
   gridColumn: "3/4"
 };
-
-
-
-{/* <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <InputLabel id="demo-select-small">Category</InputLabel>
-      <Select
-        labelId="demo-select-small"
-        id="demo-select-small"
-        label="Category"
-        onChange={changeCategory}
-      >
-    {listMovie?.map((opt, i) => (
-        <MenuItem value={opt.id} key={uuid()}>{opt.name} </MenuItem>
-
-    ))}
-      </Select>
-    </FormControl> */}

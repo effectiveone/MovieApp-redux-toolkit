@@ -19,7 +19,7 @@ export default function Footer() {
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
               <Box borderBottom={1}>Category</Box>
-              {["Home", "Contact", "usTerm of services", "About us"].map(z => (
+              {["Home", "Contact", "Terms of services", "About us"].map(z => (
                 <Box key={uuid()}>
                   <Link href="/" color="inherit">
                     {z}
@@ -33,7 +33,7 @@ export default function Footer() {
                 "Live",
                 "FAQ",
                 "Premium",
-                "Pravacy policy"
+                "Privacy policy"
               ].map(z => (
                 <Box key={uuid()}>
                   <Link href="/" color="inherit">

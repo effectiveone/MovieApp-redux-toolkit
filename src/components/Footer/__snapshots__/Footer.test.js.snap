@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders the correct trademark text 1`] = `
+<DocumentFragment>
+  <footer
+    style="background-image: url(/bg.webp);"
+  >
+    <div
+      class="MuiBox-root css-aygekn"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg css-1oqqzyl-MuiContainer-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-5 css-1ld3b9g-MuiGrid-root"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-wg4xta-MuiGrid-root"
+          >
+            <div
+              class="MuiBox-root css-vcv939"
+            >
+              Category
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Home
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Contact
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Terms of services
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                About us
+              </a>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-wg4xta-MuiGrid-root"
+          >
+            <div
+              class="MuiBox-root css-vcv939"
+            >
+              Account
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Live
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                FAQ
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Premium
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Privacy policy
+              </a>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4 css-wg4xta-MuiGrid-root"
+          >
+            <div
+              class="MuiBox-root css-vcv939"
+            >
+              Messages
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                You must watch
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Recent release
+              </a>
+            </div>
+            <div
+              class="MuiBox-root css-0"
+            >
+              <a
+                class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-1cghntr-MuiTypography-root-MuiLink-root"
+                href="/"
+              >
+                Top IMDB
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1gjlakx"
+        >
+          MovieApp    ® 2023
+        </div>
+      </div>
+    </div>
+  </footer>
+</DocumentFragment>
+`;
