@@ -6,7 +6,6 @@ import Category from "./pages/Category";
 import Search from "./pages/Search";
 import Favorite from "./pages/Favorite/Favorite";
 
-
 function App() {
   return (
     <div className="App">

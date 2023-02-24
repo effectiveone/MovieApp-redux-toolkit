@@ -1,5 +1,12 @@
 import { takeLatest, put, fork, call } from "redux-saga/effects";
-import { fetchMovie, fetchMovies, fetchAllMovie, fetchCrew, fetchTheMostPopularMovie, fetchUpcomingMovie } from "./api";
+import {
+  fetchMovie,
+  fetchMovies,
+  fetchAllMovie,
+  fetchCrew,
+  fetchTheMostPopularMovie,
+  fetchUpcomingMovie,
+} from "./api";
 import {
   getCrew,
   setCrew,
@@ -9,10 +16,10 @@ import {
   setMovies,
   getCategoryMovies,
   setCategoryMovies,
-  getTheMostPopular, 
+  getTheMostPopular,
   setTheMostPopular,
   getUpcomingMovie,
-  setUpcomingMovie
+  setUpcomingMovie,
 } from "./feature/movieSlice";
 
 function* onLoadMoviesAsync({ payload }) {
@@ -63,7 +70,6 @@ function* onLoadCategoryMoviesAsync({ payload }) {
   }
 }
 
-
 function* onLoadTheMostPopularAsync({ payload }) {
   try {
     const categoryName = payload;
@@ -87,7 +93,6 @@ function* onLoadUpcomingMovieAsync({ payload }) {
     console.log(error);
   }
 }
-
 
 function* onLoadUpcomingMovie() {
   yield takeLatest(getUpcomingMovie.type, onLoadUpcomingMovieAsync);
@@ -119,5 +124,5 @@ export const moviesSagas = [
   fork(onLoadMovies),
   fork(onLoadCrew),
   fork(onLoadMovie),
-  fork(onLoadCategoryMovies)
+  fork(onLoadCategoryMovies),
 ];

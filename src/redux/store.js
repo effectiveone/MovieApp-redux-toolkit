@@ -9,7 +9,7 @@ import { combineReducers } from "redux";
 const sagaMiddleware = createSagaMiddleware();
 
 const reducer = combineReducers({
-    category: appReducer,
+  category: appReducer,
   movie: MovieReducer,
   favorite: favSlice,
 });

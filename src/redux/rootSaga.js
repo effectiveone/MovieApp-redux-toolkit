@@ -3,5 +3,5 @@ import { moviesSagas } from "./movieSagas";
 import favSlice from "./feature/favSlice";
 
 export default function* rootSaga() {
-  yield all([...moviesSagas,  favSlice]);
+  yield all([...moviesSagas, favSlice]);
 }
